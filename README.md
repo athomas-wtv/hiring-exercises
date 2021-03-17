@@ -32,7 +32,12 @@ We know that the technical hiring processes in our industry are generally broken
 
 1. Clone a copy of the repository
 2. Install the relevant tools in each of the `frontend` and `service` folders with `npm i`
-3. Spin up the backend service (see details on Tech Setup below).
+3. In the `service` folder, create a `.env` file by copying the `.env.example` file e.g. `cp .env.example .env`
+4. Spin up the backend service with `npm run docker:dev` in the `service` folder
+5. Spin up the frontend app with `npm run dev` in the `frontend` folder
+6. Visit `http://localhost:8000` and you should see a running app - Congratulations!
+
+Any questions, drop us a line at careers@purepm.co.
 
 The back-end service uses dockerized services, to save having to install each component on your machine locally. There's a good [Getting Started](https://www.docker.com/get-started) tutorial if you're not familiar with docker yet.
 
