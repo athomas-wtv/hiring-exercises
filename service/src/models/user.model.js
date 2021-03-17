@@ -35,6 +35,10 @@ const userSchema = mongoose.Schema(
       },
       private: true, // used by the toJSON plugin
     },
+    account: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Account',
+    },
     role: {
       type: String,
       enum: roles,
@@ -45,6 +49,13 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.virtual('transactions', {
+  ref: 'Transaction',
+  localField: 'account',
+  foreignField: 'account',
+  options: { sort: { createdAt: -1 } },
+});
 
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);

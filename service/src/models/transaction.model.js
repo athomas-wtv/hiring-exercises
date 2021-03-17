@@ -1,23 +1,19 @@
 const mongoose = require('mongoose');
 const { toJSON } = require('./plugins');
 
-const AccountSchema = mongoose.Schema(
+const TransactionSchema = mongoose.Schema(
   {
-    user: {
+    account: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'User',
+      ref: 'Account',
       required: true,
     },
-    interestRate: {
+    description: {
+      type: String,
+      required: true,
+    },
+    amount: {
       type: Number,
-      required: true,
-    },
-    initialInvestmentCents: {
-      type: Number,
-      required: true,
-    },
-    accountEstablishedDate: {
-      type: Date,
       required: true,
     },
   },
@@ -27,11 +23,11 @@ const AccountSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-AccountSchema.plugin(toJSON);
+TransactionSchema.plugin(toJSON);
 
 /**
  * @typedef Account
  */
-const Token = mongoose.model('Account', AccountSchema);
+const Token = mongoose.model('Transaction', TransactionSchema);
 
 module.exports = Token;
