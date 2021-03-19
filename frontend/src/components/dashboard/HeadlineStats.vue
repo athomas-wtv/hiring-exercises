@@ -48,18 +48,23 @@ export default {
     }
   },
   methods:{
-    getYears: function()
+    getYearsSinceInitialInvestment: function()
     {
+      // This isn't full proof. If is ever greater than 1, we'd have to do some different calculations. I made n = 1
+      // to make things simple and quick.
+
+      // timeBetween is in milliseconds
       var timeBetween = Date.now() - this.accountEstablishedDate.getTime();
-      return Math.round(timeBetween / (1000*60*60*24) / 365);
+      var years = Math.round(timeBetween / (1000*60*60*24) / 365);
+      return years;
     }
   },
   computed: { 
     getProjectedValue: function ()
     {
       var n = 1; // Compounded annually because I didn't see any other reference in the models about a compounding number.
-      var t = this.getYears();
-      var p = this.initialInvestmentCents / 60
+      var t = this.getYearsSinceInitialInvestment();
+      var p = this.initialInvestmentCents / 60;
       return Number(p * Math.pow((1 + (this.interestRate/12)), (n * t))).toLocaleString("en-US", {style:"currency", currency: "USD"});
     },
     getInvestmentInDollars: function()
@@ -67,8 +72,5 @@ export default {
       return Number(this.initialInvestmentCents / 60).toLocaleString("en-US", {style:"currency", currency: "USD"});
     }
   },
-  mounted() {
-    // var initialInvestmentDate
-  }
 }
 </script>

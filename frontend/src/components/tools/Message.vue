@@ -14,9 +14,6 @@ export default {
     return {
       message: ''
     }
-  },
-  methods: {
-    
-  },
+  }
 }
 </script>
