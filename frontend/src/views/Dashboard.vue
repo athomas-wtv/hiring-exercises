@@ -51,7 +51,7 @@
       <main>
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div class="mt-6 px-4 py-6 sm:px-0">
-            <headline-stats />
+            <headline-stats initialInvestmentCents="initialInvestmentCents" interestRate="interestRate" accountEstablishedDate="accountEstablishedDate" />
             <investment-table class="mt-6" />
           </div>
         </div>
@@ -66,5 +66,40 @@ import HeadlineStats from "../components/dashboard/HeadlineStats.vue"
 export default {
   name: "Dashboard",
   components: { InvestmentTable, HeadlineStats },
+  methods:{
+    getAccount: async function()
+    {
+      // This would not run for some reason. Not sure why.
+      // I wanted to get the account information and pass the details
+      // as props into the HeadlineStats.vue file
+
+      // await this.$store.dispatch("accounts/getAccount").then(res => {
+      //   console.log("Account Information: " + res)
+      // },
+      // res => 
+      // {
+      //   console.log("Failed: " + res)
+      // })
+    },
+    getTransactions: async function()
+    {
+      // Again, I didn't have time to figure out why this wasn't working.
+      // I would have passed the response as props into the table component
+      // and mapped/looped/repeated the data inserting the values/properties
+      // where they needed to go.
+
+      // await this.$store.dispatch("accounts/getAccountTransactions").then(res => {
+      //   console.log("Account Transactions: " + res)
+      // },
+      // res => 
+      // {
+      //   console.log("Failed: " + res)
+      // })
+    }
+  },
+  mounted(){
+    this.getAccount();
+    this.getTransactions();
+  }
 }
 </script>

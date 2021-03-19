@@ -53,6 +53,7 @@
               >
                 Log in
               </button>
+              <message class="text-red-400" :messageText="messageText" v-if="messageText"></message>
             </div>
           </Form>
         </div>
@@ -70,6 +71,7 @@
 import { Field, Form, ErrorMessage } from "vee-validate"
 import { required, email } from "@vee-validate/rules"
 import { defineRule } from "vee-validate"
+import Message from "../tools/Message.vue"
 
 defineRule("required", required)
 defineRule("email", email)
@@ -80,6 +82,7 @@ export default {
     Field,
     Form,
     ErrorMessage,
+    Message
   },
   data() {
     return {
@@ -87,12 +90,20 @@ export default {
         email: null,
         password: null,
       },
+      messageText:''
     }
   },
   methods: {
     login: async function () {
-      await this.$store.dispatch("auth/login", this.form)
-      this.$router.push("dashboard")
+      await this.$store.dispatch("auth/login", this.form).then(res => {
+        console.log("Success: " + res)
+        this.$router.push("dashboard")
+      },
+      res => 
+      {
+        console.log("Failed: " + res)
+        this.messageText = 'Login failed! Please check your credentials and try again.'
+      })
     },
   },
 }

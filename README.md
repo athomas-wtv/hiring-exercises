@@ -1,61 +1,28 @@
 # Full Stack Interview Project: Investor Site Enhancements
+Candidate: Andre Thomas
 
-## Hello and Welcome!
+## Developer's Notes
 
-If you are reading this then you're probably talking to us about a technical role at [Pure](https://purepm.co). If so, congratulations!
+First and foremost, I want to thank you for the opportunity to continue in the interview process. I enjoyed the challenge very much.
 
-In order to move forward, we'd like to know a little about how you work. To that end, this repository contains a **short, time-boxed** (approximately 1h 30m max) that you can use demonstrate your skills and abilities.
+### Code Readability
+In my assessment, there was not much one could do to mess up the readability unless they were trying to. Probably, the area that could have been the source of convolution were the calculating of dollar amounts. There are ways to do these calculations in one or two lines but that would have been unhelpful to other devs who may need to make updates in the future. I broke many of the variables up so that readers can follow the logic.
 
-We follow a lightweight agile development process at Pure, and so have presented a small set of user stories to work through. There is no grading or scoring, nor is it pass-fail, rather these are meant to serve a sample of your reductive thought processes as an engineer.
+### Code Extensibility
+I added a component called "Message". I did this because a scalable app would utilize many messages for a better UX. Now, as this foo app scales, devs can use this component to add messaging throughout the application.
 
-## A few words on asynchronous/take-home exercises
+There are ways to make that component more robust. One could add classes, styling, or even other variables that hide and show certain elements for more effects (i.e. a fontawesome icon).
 
-We know that the technical hiring processes in our industry are still evolving. Acknowledging that there are mixed opinions on take-home exercises in general, we have chosen this route to give you the most flexibility and to respect the time investment that you're making in seeking this role.
+## Tests
+I created a test to check to see if the correct error code came back unauthorized if someone entered in invalid credentials.
 
-*  We're a fully-remote team, currently all based within continental US, but spread across multiple time zones. Async exercises allow you to show off your skills at a time/place that works for you.
+### Difficulties
+One of the challenges that I faced was the Vue.js learning curve. Before our interview, I have never touched this library but I have come to enjoy it's simplicity. After our interview, I began watching LinkedIn Learning tutorials to wrap my head around it in preparation for this challenge. The time spent served me well--all things considering :)
 
-*  Take-home exercises allow you to work at your own pace. We intentionally structure these to take around 1h 30m in time and ask that you limit your investment to no more than the suggested time, however you are free to break this into as many sessions as you wish.
+Another challange was the api calls. I added two comments on the Dashboard component letting you know what I would have done had I gotten it to work. I wanted to make you all aware that  I am familiar with js promises. In my current job, I make http calls all the time (i.e. `$http.get`) from AngularJS to .NET endpoints via promises and manipulate the data I get back. That's what I was looking to do but just couldn't in this short of time. What I would have done with the data I got back is listed in the comments.
 
-* It matches the nature of our work. Most of being an engineer on a remote team is self-directed exploration of a problem, followed by period(s) of cyclic work/edit/review, followed by submittal for review and approval by your peers. Async exercises allow you to do the same.
-
-* It eliminates the performance anxiety of forced-pairing with someone whom you've just met.
-
-## General Instructions
-
-1. We would like you to work through the User Stories below, adding the relevant functionality to the application.
-
-2. Create a fork of the repository in your own GitHub account, and add @PureEngHiring as a private collaborator.
-
-3. When you are comfortable with your changes notify us through GitHub or, email us at careers@purepm.co and we'll review it withn 48 hours and respond back to you with objective feedback.
-
-4. We are particularly interested in your approach to testing, and how you factor your code for readibility and extensibility by others.
-
-5. Complete as much of the exercise as you can in 1h 30m or less. Don't worry if you don't complete all of the stories.
-
-## Tech setup
-
-The back-end service uses dockerized services, to save having to install each component on your machine locally. There's a good [Getting Started](https://www.docker.com/get-started) tutorial if you're not familiar with docker yet.
-
-1. Clone a copy of the repository
-2. Install the relevant tools in each of the `frontend` and `service` folders with `npm install`
-3. In the `service` folder, create a `.env` file by copying the `.env.example` file e.g. `cp .env.example .env`
-4. Spin up the backend service with `npm run docker:dev` in the `service` folder
-5. Spin up the frontend app with `npm run dev` in the `frontend` folder
-6. Visit `http://localhost:8000` and you should see a running app - Congratulations!
-
-Additional notes on the server can be found in the [Service Folder](/service/README.md).
-
-Any questions, drop us a line at careers@purepm.co.
-
-### Seed Data
-
-It may be useful to insert seed data into the running MongoDB instance. To do so, you can optionally install the [Mongo Seeding CLI](https://github.com/pkosiec/mongo-seeding/tree/master/cli) and follow instructions there to seed your Mongo instance.
-
-There is sample seed data under the `/data` folder.
-
-## Questions
-
-Drop us a line at careers@purepm.co and we'll be happy to elaborate on anything here.
+### Conclusion
+Although, I could only successfully completed one story, I am confident in my ability to finish the last two had I gotten the api calls working. Thank you, again, for your time and I look forward to the next steps if you think my skills warrant further interviewing. Take care!
 
 ## User Stories
 ---

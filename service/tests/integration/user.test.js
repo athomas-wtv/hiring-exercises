@@ -122,6 +122,17 @@ describe('User routes', () => {
         .expect(httpStatus.BAD_REQUEST);
     });
 
+    test('should return 401 error if email and password credentials are invalid', async () => {
+      await insertUsers([userOne]);
+      newUser.password = '11112222';
+
+      await request(app)
+        .post('/v1/users')
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(newUser)
+        .expect(httpStatus.UNAUTHORIZED);
+    });
+
     test('should return 400 error if role is neither user nor admin', async () => {
       await insertUsers([admin]);
       newUser.role = 'invalid';
